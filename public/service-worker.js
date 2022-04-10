@@ -20,24 +20,24 @@ const FILES_TO_CACHE = [
   ];
 
  // Respond with cached resources
-self.addEventListener('fetch', function (event) {
-  console.log('fetch request : ' + event.request.url)
-  event.respondWith(
-    caches.match(event.request).then(function (request) {
+self.addEventListener('fetch', function (e) {
+  console.log('fetch request : ' + e.request.url)
+  e.respondWith(
+    caches.match(e.request).then(function (request) {
       if (request) { // if cache is available, respond with cache
-        console.log('responding with cache : ' + event.request.url)
+        console.log('responding with cache : ' + encodeURI.request.url)
         return request
       } else {       // if there are no cache, try fetching request
-        console.log('file is not cached, fetching : ' + event.request.url)
-        return fetch(event.request)
+        console.log('file is not cached, fetching : ' + e.request.url)
+        return fetch(e.request)
       }
     })
   )
 })
 
 // Cache resources
-self.addEventListener('install', function (event) {
-  event.waitUntil(
+self.addEventListener('install', function (e) {
+  e.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
       console.log('installing cache : ' + CACHE_NAME)
       return cache.addAll(FILES_TO_CACHE)
@@ -46,8 +46,8 @@ self.addEventListener('install', function (event) {
 })
 
 // Delete outdated caches
-self.addEventListener('activate', function (event) {
-  event.waitUntil(
+self.addEventListener('activate', function (e) {
+  e.waitUntil(
     caches.keys().then(function (keyList) {
       let cacheKeeplist = keyList.filter(function (key) {
         return key.indexOf(APP_PREFIX);
