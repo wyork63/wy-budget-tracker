@@ -4,19 +4,19 @@ Module 19 challenge
 ## Description
 PWA Budget tracker 
 
+View the deployed application at the following link 
+https://obscure-wildwood-51385.herokuapp.com/
+
 ## Table of Contents
 
   * [Installation](#installation)
-  
-  * [Walkthrough](#walkthrough)
 
   * [Questions](#questions)
 
 
 ## Installtion
+To install this on the local machine - copy the code and run npm I
 
-
-## Walkthrough
 
 
 ## Questions 
